@@ -1,0 +1,27 @@
+{
+  "name": "codemirror-mode-jsonnet",
+  "version": "1.0.0",
+  "description": "codemirror mode for Jsonnet",
+  "main": "jsonnet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/google/codemirror-mode-jsonnet.git"
+  },
+  "keywords": [
+    "jsonnet",
+    "codemirror",
+    "lexer",
+    "syntax",
+    "highlight",
+    "javascript"
+  ],
+  "author": "Dave Cunningham <dcunnin@google.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/google/codemirror-mode-jsonnet/issues"
+  },
+  "homepage": "https://github.com/google/codemirror-mode-jsonnet#readme"
+}
