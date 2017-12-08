@@ -1,6 +1,6 @@
 # codemirror-mode-jsonnet
 
-[Jsonnet][http://jsonnet.org] integration for codemirror. Try it out [here][https://google.github.io/codemirror-mode-jsonnet/].
+[Jsonnet](http://jsonnet.org) integration for codemirror. Try it out [here](https://google.github.io/codemirror-mode-jsonnet/).
 
 ## Features
 
