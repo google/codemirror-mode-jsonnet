@@ -184,7 +184,6 @@
         return {
           cComment: false,
           textBlock: false,
-          string: false,
           importString: false,
           string: false,
           stringSingle: false,
