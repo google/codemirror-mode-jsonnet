@@ -9,7 +9,7 @@ escaping.
 
 ## Usage instructions
 
-See index.html.
+See index.html in this repo.  Also available via `npm install codemirror-mode-jsonnet`.
 
 ## More Info
 
