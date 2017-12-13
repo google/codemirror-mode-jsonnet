@@ -55,6 +55,7 @@ local keywords = [
   if true then 0 else 1,
   { [k]: k for k in ["a", "b", "c"] },
   function(x=10) x * x,
+  std.join([], []),  // Contains 'in' which should not be highlighted.
 ];
 
 local myfunc(x=10) = x * x;

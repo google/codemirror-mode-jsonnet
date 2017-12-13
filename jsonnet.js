@@ -26,6 +26,24 @@
 })(function(CodeMirror) {
   "use strict";
 
+  let keywords = {
+      "local": "keyword",
+      "self": "keyword",
+      "super": "keyword",
+      "assert": "keyword",
+      "function": "keyword",
+      "if": "keyword",
+      "then": "keyword",
+      "else": "keyword",
+      "for": "keyword",
+      "in": "keyword",
+      "tailstrict": "keyword",
+      "error": "keyword",
+      "true": "atom",
+      "false": "atom",
+      "null": "atom",
+  };
+
   CodeMirror.defineMode("jsonnet", function() {
     return {
       token: function(stream, state) {
@@ -165,16 +183,16 @@
         }
 
         // Various keywords.
-        if (stream.match(/local\b/)) return "keyword";
-        if (stream.match(/\$\b/)) return "keyword";
-        if (stream.match(/(?:self|super)\b/)) return "keyword";
-        if (stream.match(/(?:assert|function|if|then|else|for|in)\b/)) return "keyword";
-        if (stream.match(/tailstrict\b/)) return "keyword";
-        if (stream.match(/error\b/)) return "keyword";
-
-        if (stream.match(/(?:true|false|null)\b/)) return "atom";
+        if (stream.match(/\$/)) return "keyword";
         if (stream.match(/(?:\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/i)) return "number";
         if (stream.match(/[-+\/*=<>!&~^|$%]+/)) return "operator";
+
+        // Identifiers
+        let identifier = stream.match(/[a-zA-Z_][a-zA-Z0-9_]*/);
+        if (identifier) {
+          identifier = identifier[0];
+          return keywords[identifier];
+        }
 
         stream.next();
 
