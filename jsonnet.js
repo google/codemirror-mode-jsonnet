@@ -182,15 +182,16 @@
           return "string";
         }
 
-        // Various keywords.
         if (stream.match(/\$/)) return "keyword";
         if (stream.match(/(?:\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/i)) return "number";
         if (stream.match(/[-+\/*=<>!&~^|$%]+/)) return "operator";
 
-        // Identifiers
+        // Identifiers and keywords that look like identifiers.
         let identifier = stream.match(/[a-zA-Z_][a-zA-Z0-9_]*/);
         if (identifier) {
           identifier = identifier[0];
+          // If it's not in the dict, we return null to indicate no special
+          // syntax highlighting.
           return keywords[identifier];
         }
 
