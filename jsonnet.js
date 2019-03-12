@@ -178,7 +178,7 @@
         // Enter text block.
         if (stream.match(/\|\|\|/)) {
           state.textBlock = true;
-          state.textBlockCol = null;
+          state.textBlockIndent = null;
           return "string";
         }
 
