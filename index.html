@@ -35,7 +35,33 @@ local various_primitives = [
     // still a string
     ||| didn't do anything
   |||,
-  "x\'x\\x\/x\bx\fx\nx\rx\tx",
+  // empty file
+  |||
+  |||,
+  // blank line
+  |||
+
+  |||,
+  // Blank lines at beginning.
+  |||
+
+    content
+  |||,
+
+  |||
+    foo
+    |||
+    surprise!
+    |||
+  |||,
+  /*
+    |||
+      ignore in comment
+    |||
+  */
+  "||| ignore in string",
+  "x\"\'x\\x\/x\bx\fx\nx\rx\tx",
+  'x\"\'x\\x\/x\bx\fx\nx\rx\tx',
   0, 0e+0, 0e-0, 0e0, 0E+0, 0E-0, 0E0,
   0.0, 0.0e+0, 0.0e-0, 0.0e0, 0.0E+0, 0.0E-0, 0.0E0,
   10, 10e+0, 10e-0, 10e0, 10E+0, 10E-0, 10E0,
@@ -75,11 +101,11 @@ local operators = [
 
 // Compiler template
 local CCompiler = {
-    cFlags: [],
-    out: "a.out",
-    local flags_str = std.join(" ", self.cFlags),
-    local files_str = std.join(" ", self.files),
-    cmd: "%s %s %s -o %s" % [self.compiler, flags_str, files_str, self.out],
+  cFlags: [],
+  out: "a.out",
+  local flags_str = std.join(" ", self.cFlags),
+  local files_str = std.join(" ", self.files),
+  cmd: "%s %s %s -o %s" % [self.compiler, flags_str, files_str, self.out],
 };
 
 // GCC specialization
@@ -94,20 +120,21 @@ local Dbg = { cFlags: super.cFlags + ["-g"] };
 
 // Output:
 {
-    targets: [
-        Gcc { files: ["a.c", "b.c"] },
-        Clang { files: ["test.c"], out: "test" },
-        Clang + Opt { files: ["test2.c"], out: "test2" },
-        Gcc + Opt + Dbg { files: ["foo.c", "bar.c"], out: "baz" },
-    ],
+  targets: [
+    Gcc { files: ["a.c", "b.c"] },
+    Clang { files: ["test.c"], out: "test" },
+    Clang + Opt { files: ["test2.c"], out: "test2" },
+    Gcc + Opt + Dbg { files: ["foo.c", "bar.c"], out: "baz" },
+  ],
 }
+
 </textarea></div>
 
     <script>
       var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         mode: {name: "jsonnet"},
         lineNumbers: true,
-        indentUnit: 4,
+        indentUnit: 2,
         matchBrackets: true
     });
     </script>

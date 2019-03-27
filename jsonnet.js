@@ -61,10 +61,19 @@
 
         // In a text block (|||)
         if (state.textBlock) {
+          if (stream.match(/$/)) {
+              stream.next();
+              return "string";
+          }
           if (state.textBlockIndent == null) {
+            if (stream.match(/\s*\|\|\|/)) {
+              state.textBlock = false;
+              return "string";
+            }
             state.textBlockIndent = stream.indentation();
           }
-          if (stream.indentation() >= state.textBlockIndent) {
+          if (state.textBlockIndent != null
+              && stream.indentation() >= state.textBlockIndent) {
             stream.skipToEnd();
             return "string";
           }
